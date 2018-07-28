@@ -14,18 +14,29 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it 'sets session[:name] if :name was given' do
-      me = 'Werner Brandes'
+      me = 'Deus'
       post :create, name: me
       expect(@request.session[:name]).to eq me
     end
 
     it 'redirects to "/" if logged in' do
-      me = 'Werner Brandes'
+      me = 'Deus'
       post :create, name: me
       expect(response).to redirect_to('/')
     end
   end
 
   descibe 'post destroy' do
+    it 'leaves session[:name] nil if it was not set' do
+      post :destroy
+      expect(@request.session[:name]).to be nil
+    end
+
+    it 'clears session[:name] if it was set' do
+      post :create, name: 'Deus'
+      expect(@request.session[:name]).not_to be nil
+      post :destroy
+      expect(@request.session[:name]).to be nil
+    end
   end
 end
