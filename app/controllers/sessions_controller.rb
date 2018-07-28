@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-
+    # conditional for OAuth or else
+    
   end
 
   def destroy
