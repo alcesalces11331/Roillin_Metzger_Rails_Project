@@ -19,4 +19,16 @@ module LoginHelper
     )
   end
 
+  def create_standard_and_admin_user
+    @Potter = User.create(
+      name: "Potter",
+      password: "password"
+    )
+    @Dumbledore = User.create(
+      name: "Dumbledore",
+      password: "password",
+      admin: true
+    )
+  end
+
 end
