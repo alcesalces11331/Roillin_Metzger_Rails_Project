@@ -38,6 +38,10 @@ group :development, :test do
   # Capybara and rspec
   gem 'capybara', '~> 3.4', '>= 3.4.2'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  # strategies for cleaning databases
+  gem 'database_cleaner', '~> 1.7'
+  # Middleware for rack.session environment
+  gem 'rack_session_access', '~> 0.2.0'
 end
 
 group :development do
