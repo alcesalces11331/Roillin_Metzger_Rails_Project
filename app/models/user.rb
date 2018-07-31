@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-  # git comment testing
+  has_secure_password
+
+  has_many :cats
+  has_many :spells, :through => :cats
 end
