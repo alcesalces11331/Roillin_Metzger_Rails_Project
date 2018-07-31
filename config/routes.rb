@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:new, :create, :show, :edit]
+
+  # resources :schools do resources :courses, only: :show end
+
+  # resources :courses do resources :spells end
+
+  # resources :cats do resources :spells, only: :show end
+
+  # session routes
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
