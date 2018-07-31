@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       end
 
       @user.id = @user.uid
+      @user.save!
       session[:user_id] = @user.id
 
       render 'static/welcome'
