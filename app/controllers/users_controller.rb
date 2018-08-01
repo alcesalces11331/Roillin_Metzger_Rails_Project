@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_checkpoint, only: [:new, :create]
 
   def new
     @user = User.new
