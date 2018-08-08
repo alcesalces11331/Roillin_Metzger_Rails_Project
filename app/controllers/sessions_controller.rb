@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
     # conditional for OAuth or else
     if auth
       @user = User.find_or_create_by_omniauth(auth)
-      
-      @user.save!
+
       session[:user_id] = @user.id
 
       render 'static/welcome'

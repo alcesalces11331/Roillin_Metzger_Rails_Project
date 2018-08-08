@@ -11,15 +11,17 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_by_omniauth(auth)
     self.where(:name => auth['info']['first_name']).first_or_create do |user|
-      user.provider = auth.provider
+      # user.provider = auth.provider
       # using ActiveSupport::SecureRandom
       user.password = SecureRandom.hex(32)
       user.uid = auth.uid
+      user.email = auth['info']['email']
       # need to make helper method for auth.info.name
       user.name = auth.info.name
       # need to create helper method for .credentials methods
-      user.oauth_token = auth_hash.credentials.token
+      user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
+    end
   end
 end
