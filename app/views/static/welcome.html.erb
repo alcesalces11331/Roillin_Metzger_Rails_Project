@@ -6,6 +6,7 @@
   <h2>Email: <%= @user.email %></h2>
   <h2>Facebook UID: <%= @user.uid %></h2>
   <img src="<%= @user.image %>">
+  <!-- create a cat -->
 <% else %>
   <%= link_to 'Create an Account', signup_path %><br>
   <%= link_to 'Login', signin_path %><br>

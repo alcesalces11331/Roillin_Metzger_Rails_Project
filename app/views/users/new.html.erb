@@ -1,4 +1,6 @@
 <h1>Sign Up</h1>
+<!-- need to use form_for -->
+
 <%= form_tag signup_path, method: :post, authenticity_token: true do %>
   <%= label_tag :name, "Username" %>
   <%= text_field_tag :name %>
