@@ -6,13 +6,8 @@ class SessionsController < ApplicationController
   def create
     # conditional for OAuth or else
     if auth
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.image = auth['info']['image']
-      end
-
-      @user.id = @user.uid
+      @user = User.find_or_create_by_omniauth(auth)
+      
       @user.save!
       session[:user_id] = @user.id
 
