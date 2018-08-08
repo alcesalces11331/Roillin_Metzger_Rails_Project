@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
     User.create(
       :name => "Hagrid"
       :password => "password"
+      :email => "email@email.com"
     )
   }
 
@@ -13,16 +14,13 @@ RSpec.describe User, type: :model do
     User.create(
       :name => "Barrell"
       :password => "password"
+      :email => "email"
       :admin => true
     )
   }
 
-  it "is valid with a name and password" do
+  it "is valid with a name, password, and email" do
     expect(user).to be_valid
-  end
-
-  it "is not valid without a password" do
-    expect(User.new(name: "Name")).not_to be_valid
   end
 
   it "is valid with an admin boolean" do
