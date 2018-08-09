@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create, :show, :edit]
-
-  resources :cats
-
-  # resources :schools do resources :courses, only: :show end
-
-  # resources :courses do resources :spells end
-
-  # resources :cats do resources :spells, only: :show end
-
-  # cat paths
-  get '/cats/:id', to: 'cats#show', as: 'cat'
+  # shallow nested routing to represent model relationships with ease of view
+  resources :users, shallow: true do
+    resources :cats, shallow: true do
+      resources :spells, :potions
+    end
+  end
 
   # user paths
   get '/signup', to: 'users#new'
