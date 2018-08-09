@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :login_checkpoint, only: [:new, :create, :edit, :destroy]
+  before_action :login_checkpoint, only: [:new, :create, :update, :destroy]
 
   def new
     @cat = Cat.new
@@ -32,7 +32,9 @@ class CatsController < ApplicationController
   end
 
   def destroy
-
+    @cat = Cat.find_by(id: params[:id])
+    @cat.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private
