@@ -2,15 +2,22 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :edit]
 
+  resources :cats
+
   # resources :schools do resources :courses, only: :show end
 
   # resources :courses do resources :spells end
 
   # resources :cats do resources :spells, only: :show end
 
-  # session routes
+  # cat paths
+  get '/cats/:id', to: 'cats#show', as: 'cat'
+
+  # user paths
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+
+  # session routes and paths
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
