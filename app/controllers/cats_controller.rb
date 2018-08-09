@@ -1,4 +1,5 @@
 class CatsController < ApplicationController
+  before_action :login_checkpoint, only: [:new, :create]
 
   def new
     @cat = Cat.new
@@ -14,6 +15,7 @@ class CatsController < ApplicationController
   end
 
   def show
+    @cat = Cat.find_by(id: params[:id])
   end
 
   def edit

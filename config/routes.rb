@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # shallow nested routing to represent model relationships with ease of view
-  resources :users, shallow: true do
+  resources :users, only: [:new, :create, :show], shallow: true do
     resources :cats, shallow: true do
       resources :spells, :potions
     end
