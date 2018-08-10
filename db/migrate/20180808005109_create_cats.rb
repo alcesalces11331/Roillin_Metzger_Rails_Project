@@ -6,6 +6,7 @@ class CreateCats < ActiveRecord::Migration
       t.integer :age
       t.string :user_id
       t.string :school_id
+      t.boolean :enrolled, :default => false
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
     end
