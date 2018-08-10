@@ -6,7 +6,15 @@
   <h2>Email: <%= @user.email %></h2>
   <h2>Facebook UID: <%= @user.uid %></h2>
   <img src="<%= @user.image %>">
-  <!-- create a cat -->
+
+  <!-- links to either create a cat or view your cats -->
+  <% if !@user.cats %>
+    <%= link_to "Create a Spell-Cat", new_user_cat_path %>
+  <% else %>
+    <%= link_to "Create a Spell-Cat", new_user_cat_path %>
+    <%= link_to "Your Spell-Cats", user_cats_path %>
+  <% end %>
+  
   <!-- create a spell -->
 <% else %>
   <%= link_to 'Create an Account', signup_path %><br>

@@ -1,6 +1,10 @@
 class CatsController < ApplicationController
   before_action :login_checkpoint, only: [:new, :create, :update, :destroy]
 
+  def index
+    @cats = Cat.all
+  end
+
   def new
     @cat = Cat.new
   end
