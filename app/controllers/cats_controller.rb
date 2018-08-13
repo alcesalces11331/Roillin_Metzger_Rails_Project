@@ -10,7 +10,6 @@ class CatsController < ApplicationController
   end
 
   def create
-    byebug
     @cat = Cat.new(cat_params)
     if @cat.save
       redirect_to cat_path(@cat)

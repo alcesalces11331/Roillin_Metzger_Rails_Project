@@ -4,7 +4,7 @@ class Cat < ActiveRecord::Base
   has_many :spells
   has_many :potions
 
-  validates :name, :type, :age, presence: true
+  validates :name, :type_of, :age, presence: true
 
   def create_potion
   end

@@ -5,6 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <div class="header">
+    <% if logged_in? %>
+      <%= form_tag signout_path, method: :post, authenticity_token: true do %>
+        <%= submit_tag "Log Out" %>
+      <% end %>
+    <% else %>
+      <%= link_to signin_path %>
+    <% end %>
+  </div>
 </head>
 <body>
 
