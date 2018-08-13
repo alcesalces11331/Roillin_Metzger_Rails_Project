@@ -11,10 +11,10 @@
   <% if !@user.cats %>
     <%= link_to "Create a Spell-Cat", new_user_cat_path %>
   <% else %>
-    <%= link_to "Create a Spell-Cat", new_user_cat_path %>
-    <%= link_to "Your Spell-Cats", user_cats_path %>
+    <%= link_to "Create a Spell-Cat", new_user_cat_path(@user) %><br>
+    <%= link_to "Your Spell-Cats", user_cats_path(@user) %>
   <% end %>
-  
+
   <!-- create a spell -->
 <% else %>
   <%= link_to 'Create an Account', signup_path %><br>
