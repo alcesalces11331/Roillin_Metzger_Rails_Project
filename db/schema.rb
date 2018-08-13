@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808005109) do
+ActiveRecord::Schema.define(version: 20180813223105) do
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "type_of"
     t.integer  "age"
     t.string   "user_id"
     t.string   "school_id"
