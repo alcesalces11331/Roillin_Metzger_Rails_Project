@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :name, :password, :email, presence: true
-  validates :email, uniqueness: true
+  #validates :email, uniqueness: true
   validates :name, format: { with: /[^A-Za-z0-9]+/, message: "only allows alpha-numeric characters"}
   #validates :password, format: { with: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, message: "must contain 1 lowercase alphabetical, 1 uppercase, and 1 number, and have at leaset 8 characters"}
 
@@ -23,5 +23,9 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def find_user
+    User.find_by(id: params[:id])
   end
 end

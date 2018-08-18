@@ -11,6 +11,8 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
+    @cat.user = current_user
+    #byebug
     if @cat.save
       redirect_to cat_path(@cat)
     else

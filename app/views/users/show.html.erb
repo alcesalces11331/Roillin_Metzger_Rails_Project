@@ -1,5 +1,7 @@
 <h1>Hello <%= @user.name %></h1>
 
 <!-- @user.cats do |c| -->
-
+<% @user.cats.each do |c| %>
+  <p><%= link_to "#{c.name}", cat_path(c) %></p>
+<% end %>
 <!-- @user.spells do |s| -->

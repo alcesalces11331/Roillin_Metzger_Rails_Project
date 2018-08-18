@@ -10,3 +10,7 @@
   <h3><%= p.name %></h3>
   <p><%= p.description %></p>
 <% end %>
+
+08/18:
+1. Update Validation email for User to dump current session to create another. Or something.
+2. Update sessions#welcome or maybe it will be fixed by updating 1.
