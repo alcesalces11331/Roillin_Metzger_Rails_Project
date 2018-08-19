@@ -7,17 +7,18 @@ Rails.application.routes.draw do
     end
   end
 
-  # user paths
+  # user paths #new #create
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
-  # session routes and paths
+  # session paths
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
 
+  # omniauth path
   get '/auth/facebook/callback' => 'sessions#create'
-
+  
   root 'static#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
