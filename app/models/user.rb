@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :cats
   has_many :spells, :through => :cats
+  has_many :potions, :through => :cats
 
   def self.find_or_create_by_omniauth(auth)
     self.where(:name => auth['info']['first_name']).first_or_create do |user|
