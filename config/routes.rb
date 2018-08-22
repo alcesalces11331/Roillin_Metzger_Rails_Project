@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :schools, only: [:show] do
+    resources :courses, only: [:show], shallow: true do
+      resources :potions_class, :spells_class, only: [:show], shallow: true
+    end
+  end
+
   # user paths #new #create
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -18,7 +24,7 @@ Rails.application.routes.draw do
 
   # omniauth path
   get '/auth/facebook/callback' => 'sessions#create'
-  
+
   root 'static#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
