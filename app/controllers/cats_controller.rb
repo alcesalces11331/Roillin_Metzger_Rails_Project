@@ -2,7 +2,11 @@ class CatsController < ApplicationController
   before_action :login_checkpoint, only: [:index, :new, :create, :update, :destroy]
 
   def index
-    @cats = Cat.all
+    if params[:user_id]
+      @cats = Cat.find(params[:user_id]).cats
+    else
+      @cats = Cat.all
+    end
   end
 
   def new
