@@ -2,14 +2,19 @@ Rails.application.routes.draw do
 
   # shallow nested routing to represent model relationships with ease of view
   resources :users, only: [:show] do
-    resources :cats, shallow: true do
+    resources :cats, except: [:index], shallow: true do
       resources :spells, :potions, shallow: true
     end
   end
 
+  get '/cats', to: 'cats#index'
+
   resources :schools, only: [:show] do
-    resources :potions_class, :spells_class, only: [:show], shallow: true
+    resources :potions, :spells, only: [:show], shallow: true
   end
+
+  get '/potions', to: 'potions#index'
+  get '/spells', to: 'spells#index'
 
   # user paths #new #create
   get '/signup', to: 'users#new'
