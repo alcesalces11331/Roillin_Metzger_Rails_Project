@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :schools, only: [:show] do
-    resources :courses, only: [:show], shallow: true do
-      resources :potions_class, :spells_class, only: [:show], shallow: true
-    end
+    resources :potions_class, :spells_class, only: [:show], shallow: true
   end
 
   # user paths #new #create
