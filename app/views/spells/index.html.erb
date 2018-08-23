@@ -1,0 +1,9 @@
+<% @spells.each do |s| %>
+  <% if params[:cat_id] %>
+    <p><%= link_to "#{s.name}", cat_path(s) %></p>
+  <% else %>
+    <p><%= link_to "#{s.name}", spell_path(s) %></p>
+  <% end %>
+  <p><%= s.power_type %></p>
+  <p><%= s.power_level %></p>
+<% end %>
