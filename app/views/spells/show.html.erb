@@ -2,3 +2,6 @@
 <p><%= @spell.description %></p>
 <p><%= @spell.power_type %></p>
 <p><%= @spell.power_level %></p>
+
+<%= link_to "Edit #{@spell.name}", edit_spell_path(@spell) %>
+<%= link_to "Delete #{@spell.name}", spell_path(@spell), method: 'delete' %>
