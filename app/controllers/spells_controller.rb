@@ -15,12 +15,16 @@ class SpellsController < ApplicationController
 
   def create
     @spell = Spell.new(spell_params)
-    @spell.cat = params[:cat_id]
+    #@spell.cat = params[:cat_id]
     if @spell.save
-      redirect_to cats_path(@spell)
+      redirect_to spell_path(@spell)
     else
       render :new
     end
+  end
+
+  def show
+    @spell = Spell.find_by(id: params[:id])
   end
 
   def edit

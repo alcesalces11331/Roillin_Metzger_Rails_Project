@@ -1,4 +1,4 @@
 <h2><%= @school.name %></h2>
 
-<%= link_to "Create a Spell", new_cat_spell_path %>
-<%= link_to "Create a Potion", new_cat_potion_path %>
+<%= link_to "Have #{@cat.name} Create a Spell", new_cat_spell_path(@cat) %><br>
+<%= link_to "Have #{@cat.name} Create a Potion", new_cat_potion_path(@cat) %>
