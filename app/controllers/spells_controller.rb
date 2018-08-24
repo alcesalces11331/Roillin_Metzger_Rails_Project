@@ -2,8 +2,10 @@ class SpellsController < ApplicationController
   before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    if params[:cat_id]
-      @spells = Spell.find(params[:cat_id]).spells
+    # provide a list of cats to the view for filter control
+    @cats = Cat.all
+    if !params[:cat].blank?
+      @spells = Spell.by_cat(params[:cat])
     else
       @spells = Spell.all
     end

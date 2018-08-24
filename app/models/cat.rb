@@ -6,4 +6,7 @@ class Cat < ActiveRecord::Base
 
   validates :name, :type_of, :age, presence: true
 
+  def self.by_user(user_id)
+    where(user: user_id)
+  end
 end
