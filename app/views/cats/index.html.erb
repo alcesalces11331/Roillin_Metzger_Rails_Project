@@ -3,6 +3,7 @@
     <p class="cat_name"><%= link_to "#{c.name}", cat_path(c) %></p>
     <p class="cat_type_of"><%= c.type_of %></p>
     <p class="cat_age"><%= c.age %></p>
+    <p id="cat_spells"><%= link_to "#{c.name}'s Spells", cat_spells_path(c) %></p>
   </div>
 <% end %>
 
