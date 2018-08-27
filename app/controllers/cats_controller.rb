@@ -3,7 +3,7 @@ class CatsController < ApplicationController
 
   def index
     @users = User.all
-    if !params[:user].blank?
+    if !params[:user].blank? && params[:user] == current_user.id
       @cats = Cat.by_user(params[:user])
     else
       @cats = Cat.all

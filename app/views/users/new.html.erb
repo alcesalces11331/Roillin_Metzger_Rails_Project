@@ -1,12 +1,13 @@
 <h1>Sign Up</h1>
 <!-- need to use form_for -->
 
-<%= form_tag signup_path, method: :post, authenticity_token: true do %>
-  <%= label_tag :name, "Username" %>
-  <%= text_field_tag :name %>
-  <%= label_tag :email, "Email" %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password, "Password" %><br>
-  <%= password_field_tag :password %><br>
-  <%= submit_tag "Sign Up" %>
+<!-- form for -->
+<%= form_for @user do |f| %>
+  <%= f.label :name, "Username" %>
+  <%= f.text_field :name %><br>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %><br>
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email %><br>
+  <%= f.submit "Submit" %>
 <% end %>

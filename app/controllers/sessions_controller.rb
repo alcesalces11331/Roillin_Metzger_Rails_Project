@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
   def session_create_helper
     @user = User.find_by(name: params[:user][:name])
-
+    byebug
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       render 'static/welcome'

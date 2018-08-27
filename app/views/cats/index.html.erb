@@ -4,6 +4,7 @@
     <p class="cat_type_of"><%= c.type_of %></p>
     <p class="cat_age"><%= c.age %></p>
     <p id="cat_spells"><%= link_to "#{c.name}'s Spells", cat_spells_path(c) %></p>
+    <%= c.user %>
   </div>
 <% end %>
 

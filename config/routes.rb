@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # user paths #new #create
   get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  post '/signup', to: 'users#create', as: 'users'
 
   # session paths
   get '/signin', to: 'sessions#new'
