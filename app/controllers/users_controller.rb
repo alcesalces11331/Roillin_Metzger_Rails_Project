@@ -6,9 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-  #  byebug
     @user = User.new(user_params)
-  #  byebug
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
