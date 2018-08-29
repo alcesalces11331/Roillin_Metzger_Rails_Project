@@ -25,7 +25,12 @@ class CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find_by(id: params[:id])
+    if params[:cat_id]
+      @cat = Cat.find_by(id: params[:cat_id])
+    else
+      @spell = Spell.find_by(id: params[:spell_id])
+      @cat = Cat.find_by(id: @spell.cat_id)
+    end
   end
 
   def edit

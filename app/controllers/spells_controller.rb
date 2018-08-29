@@ -4,8 +4,9 @@ class SpellsController < ApplicationController
   def index
     # provide a list of cats to the view for filter control
     @cats = Cat.all
-    if !params[:cat].blank?
-      @spells = Spell.by_cat(params[:cat])
+  #  byebug
+    if !params[:cat_id].blank?
+      @spells = Spell.by_cat(params[:cat_id])
     else
       @spells = Spell.all
     end
@@ -17,7 +18,7 @@ class SpellsController < ApplicationController
 
   def create
     @spell = Spell.new(spell_params)
-    #@spell.cat = params[:cat_id]
+    @spell.cat_id = params[:cat_id]
     if @spell.save
       redirect_to spell_path(@spell)
     else
@@ -26,7 +27,10 @@ class SpellsController < ApplicationController
   end
 
   def show
+    byebug
     @spell = Spell.find_by(id: params[:id])
+    @cat = Cat.find_by(id: @spell.cat_id)
+
   end
 
   def edit

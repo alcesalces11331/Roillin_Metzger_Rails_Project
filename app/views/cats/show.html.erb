@@ -1,7 +1,9 @@
 <p class="cat_name"><%= @cat.name %></p>
-<p class="cat_type_of"><%= @cat.type_of %></p>
-<p class="cat_age"><%= @cat.age %></p>
+<p class="cat_type_of">Type: <%= @cat.type_of %></p>
+<p class="cat_age">Age: <%= @cat.age %></p>
 <h4><%= link_to "Edit #{@cat.name}", edit_cat_path(@cat) %></h4>
 <h4><%= link_to "Delete", cat_path(@cat), method: 'delete' %></h4>
 
 <h4><%= link_to "Send #{@cat.name} to School", school_path %></h4>
+
+<%= link_to "#{@cat.name}'s Spells", spells_path(@cat) %>

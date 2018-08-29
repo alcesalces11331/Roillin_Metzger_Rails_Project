@@ -1,7 +1,6 @@
 <h1>Hello <%= @user.name %></h1>
 
-<% @user.cats.each do |c| %>
-  <p><%= link_to "#{c.name}", cat_path(c) %></p>
-<% end %>
+<%= link_to "Create a Spell-Cat", new_user_cat_path(@user) %><br>
+<%= link_to "Your Spell-Cats", user_cats_path(@user) %>
 
 <!-- @user.spells do |s| -->

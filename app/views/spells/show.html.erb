@@ -3,5 +3,6 @@
 <p><%= @spell.power_type %></p>
 <p><%= @spell.power_level %></p>
 
-<%= link_to "Edit #{@spell.name}", edit_spell_path(@spell) %>
-<%= link_to "Delete #{@spell.name}", spell_path(@spell), method: 'delete' %>
+<%= link_to "Edit #{@spell.name}", edit_spell_path(@spell) %><br>
+<%= link_to "Delete #{@spell.name}", spell_path(@spell), method: 'delete' %><br>
+<%= link_to "Back to #{@cat.name}", cat_path(@cat) %>
