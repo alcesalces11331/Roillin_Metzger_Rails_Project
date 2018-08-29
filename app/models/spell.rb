@@ -8,7 +8,4 @@ class Spell < ActiveRecord::Base
     where(cat: cat_id)
   end
 
-  def self.by_user(user_id)
-    where(user: user_id)
-  end
 end

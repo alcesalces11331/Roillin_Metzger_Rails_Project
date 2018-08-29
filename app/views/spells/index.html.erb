@@ -1,9 +1,11 @@
 <% @spells.each do |s| %>
+  <p>Name: <%= s.name %></p>
+  <p>Description: <%= s.description %></p>
+  <p>Type: <%= s.power_type %></p>
+  <p>Power Level: <%= s.power_level %></p>
   <% if s.cat_id %>
-    <p><%= link_to "#{s.name}", cat_path(s, :cat_id => s.cat_id)%></p>
+    <p><%= link_to "Created By", cat_path(s, :cat_id => s.cat_id)%></p>
   <% else %>
-    <p><%= link_to "#{s.name}", spell_path(s, :spell_id => s.id)%></p>
+    <p><%= link_to "Created By", spell_path(s, :spell_id => s.id)%></p>
   <% end %>
-  <p><%= s.power_type %></p>
-  <p><%= s.power_level %></p>
 <% end %>

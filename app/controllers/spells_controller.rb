@@ -5,7 +5,8 @@ class SpellsController < ApplicationController
     # provide a list of cats to the view for filter control
     @cats = Cat.all
     if !params[:cat_id].blank?
-      @spells = Spell.by_cat(params[:cat_id])
+      @cat = Cat.find_by(id: params[:cat_id])
+      @spells = Spell.by_cat(@cat)
     else
       @spells = Spell.all
     end
