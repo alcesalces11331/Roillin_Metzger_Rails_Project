@@ -7,4 +7,8 @@ class Spell < ActiveRecord::Base
   def self.by_cat(cat_id)
     where(cat: cat_id)
   end
+
+  def self.by_spell(cat_id)
+    where(cat: cat_id)
+  end
 end

@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :login_checkpoint, only: [:new, :create, :update, :destroy]
+  before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @users = User.all
