@@ -4,9 +4,15 @@ class Spell < ActiveRecord::Base
 
   validates :name, :description, :power_type, :power_level, presence: true
   validates :power_level, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
+  validate :power_type_one_of
 
   def self.by_cat(cat_id)
     where(cat: cat_id)
+  end
+
+  private
+
+  def power_type_one_of
   end
 
 end
