@@ -15,4 +15,8 @@ class Spell < ActiveRecord::Base
   def power_type_one_of
   end
 
+  def power_types
+    @types = ['fire', 'water', 'earth', 'lightning', 'ice', 'poison', 'death', 'psychic', 'acid', 'wind']
+  end
+
 end
