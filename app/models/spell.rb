@@ -13,7 +13,7 @@ class Spell < ActiveRecord::Base
   private
 
   def power_type_one_of
-    unless self.power_type.match(power_types)
+    unless power_types.include?(self.power_type)
       errors.add(:power_type, "must be one of the types")
     end
   end
