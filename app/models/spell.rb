@@ -1,10 +1,11 @@
 class Spell < ActiveRecord::Base
+
   belongs_to :school
   belongs_to :cat
 
-  validates :name, :description, :power_type, :power_level, presence: true
+  validates :name, :description, :power_level, presence: true
   validates :power_level, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
-  validate :power_type_one_of, :on => :create
+  validate :power_type_one_only, :on => :create
 
   def self.by_cat(cat_id)
     where(cat: cat_id)
@@ -12,14 +13,8 @@ class Spell < ActiveRecord::Base
 
   private
 
-  def power_type_one_of
-    unless power_types.include?(self.power_type)
-      errors.add(:power_type, "must be one of the types")
-    end
-  end
-
-  def power_types
-    @types = ['fire', 'water', 'earth', 'lightning', 'ice', 'poison', 'death', 'psychic', 'acid', 'wind']
+  def power_type_one_only
+    errors.add(:power_type, "Power can only be one or two types") if self.power_type.count > 2
   end
 
 end

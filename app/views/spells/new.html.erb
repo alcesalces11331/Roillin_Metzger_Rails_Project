@@ -1,11 +1,15 @@
+<h3>Create a Spell</h3>
 <%= form_for @spell, url: {action: "create"} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <%= f.label :description %>
   <%= f.text_field :description %><br>
-  <%= f.label :power_type %>
-  <%= f.text_field :power_type %><br>
   <%= f.label :power_level %>
   <%= f.number_field :power_level %><br>
+  <%= f.label :power_type %><br>
+  <% @power_types.each do |p| %>
+    <%= f.label p %>
+    <%= f.check_box :power_type, options = { value: p }, checked_value = "1", unchecked_value = "0" %><br>
+  <% end %>
   <%= f.submit "Create Spell" %>
 <% end %>

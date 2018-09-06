@@ -1,5 +1,6 @@
 class SpellsController < ApplicationController
   before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy]
+  include SpellsHelper
 
   def index
     # provide a list of cats to the view for filter control
@@ -14,6 +15,8 @@ class SpellsController < ApplicationController
 
   def new
     @spell = Spell.new
+    #byebug
+    @power_types = power_types
   end
 
   def create
