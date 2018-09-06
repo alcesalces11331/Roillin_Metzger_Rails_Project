@@ -31,6 +31,7 @@ class SpellsController < ApplicationController
 
   def show
     @spell = Spell.find_by(id: params[:id])
+    #byebug
     @cat = Cat.find_by(id: @spell.cat_id)
   end
 
@@ -56,7 +57,7 @@ class SpellsController < ApplicationController
   private
 
   def spell_params
-    params.require(:spell).permit(:name, :description, :power_type, :power_level)
+    params.require(:spell).permit(:name, :description, { power_type: [] }, :power_level)
   end
 
 end

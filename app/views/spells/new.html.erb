@@ -9,7 +9,7 @@
   <%= f.label :power_type %><br>
   <% @power_types.each do |p| %>
     <%= f.label p %>
-    <%= f.check_box :power_type, options = { value: p }, checked_value = "1", unchecked_value = "0" %><br>
+    <%= f.check_box :power_type, { multiple: true }, p, false %><br>
   <% end %>
   <%= f.submit "Create Spell" %>
 <% end %>
