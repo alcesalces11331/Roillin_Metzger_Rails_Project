@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180907001242) do
+ActiveRecord::Schema.define(version: 20180907013651) do
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20180907001242) do
     t.integer  "age"
     t.string   "user_id"
     t.string   "school_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "enrolled",   default: false
   end
 
   create_table "schools", force: :cascade do |t|
