@@ -15,13 +15,14 @@ class SpellsController < ApplicationController
 
   def new
     @spell = Spell.new
-    #byebug
     @power_types = power_types
   end
 
   def create
+    @power_types = power_types
     @spell = Spell.new(spell_params)
     @spell.cat_id = params[:cat_id]
+    byebug
     if @spell.save
       redirect_to spell_path(@spell)
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822010652) do
+ActiveRecord::Schema.define(version: 20180907001242) do
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180822010652) do
     t.string  "name"
     t.string  "cat_id"
     t.text    "description"
-    t.string  "power_type"
+    t.string  "power_type",  default: "--- []\n"
     t.integer "power_level"
   end
 

@@ -5,17 +5,13 @@ class Spell < ActiveRecord::Base
 
   validates :name, :description, :power_level, presence: true
   validates :power_level, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
-  #validate :power_type_one_only, :on => :create
+  validates :power_type, length: {
+    maximum: 2,
+    message: "Power can only be one or two types"
+  }
 
   def self.by_cat(cat_id)
     where(cat: cat_id)
   end
-
-  private
-
-  #def power_type_one_only
-    #if self.power_type.
-  #  errors.add(:power_type, "Power can only be one or two types") if self.power_type.include? > 2
-#  end
 
 end
