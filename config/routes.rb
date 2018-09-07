@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # user paths #new #create
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create', as: 'users'
+
   # shallow nested routing to represent model relationships with ease of view
   resources :users, only: [:show] do
     resources :cats, shallow: true do
@@ -14,10 +18,6 @@ Rails.application.routes.draw do
   end
 
   get '/spells', to: 'spells#index'
-
-  # user paths #new #create
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create', as: 'users'
 
   # session paths
   get '/signin', to: 'sessions#new'
