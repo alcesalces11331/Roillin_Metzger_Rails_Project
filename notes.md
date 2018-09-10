@@ -1,16 +1,3 @@
-<!-- Cat.spells iterator -->
-<% @cat.spells.each do |s| %>
-  <h3><%= s.name %></h3>
-  <h3><%= s.type %></h3>
-  <p><%= s.description %></p>
-<% end %>
+09/10/18
 
-<!-- Cat.potions iterator -->
-<% @cat.potions.each do |p| %>
-  <h3><%= p.name %></h3>
-  <p><%= p.description %></p>
-<% end %>
-
-08/18:
-1. Update Validation email for User to dump current session to create another. Or something.
-2. Update sessions#welcome or maybe it will be fixed by updating 1.
+1. Schools MVC will incorporate another view to implement and reflect realistic enrolling. But, for right now, the bare works. Ideally, this will use a on_fuction JS button when I learn how to do it. Fucking can't wait to get to JS.
