@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   def login_checkpoint
     unless logged_in?
       flash[:message] = "Access Denied: Please Login"
-      redirect_to signin_path 
+      redirect_to signin_path
+    end
   end
 end
