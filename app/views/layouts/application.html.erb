@@ -15,8 +15,12 @@
     <% end %>
   </div>
   <div class="fields_with_errors">
-    <% if flash[:message] %>
-      <h6><%= flash[:message] %></h6>
+    <% if flash[:message].is_a?(Array) %>
+      <% flash[:message].each do |message| %>
+        <%= message %><br>
+      <% end %>
+    <% else %>
+      <%= flash[:message] %>
     <% end %>
   </div>
 </head>
