@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       render 'static/welcome'
     else
+      flash[:message] = "could not authenticate"
       render 'static/welcome'
     end
   end
