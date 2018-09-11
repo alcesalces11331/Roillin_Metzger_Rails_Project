@@ -22,6 +22,7 @@ class SpellsController < ApplicationController
     @power_types = power_types
     @spell = Spell.new(spell_params)
     @spell.cat_id = params[:cat_id]
+  #  byebug
     if @spell.save
       redirect_to spell_path(@spell)
     else

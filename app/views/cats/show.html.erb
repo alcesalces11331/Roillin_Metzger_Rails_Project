@@ -5,7 +5,6 @@
 <p><%= link_to "Send #{@cat.name} to School", school_path %></p>
 
 <p><%= link_to "#{@cat.name}'s Spells", spells_path(@cat, :cat_id => @cat.id) %></p>
-<p><%= link_to "Have #{@cat.name} Create a Spell", new_cat_spell_path(@cat) %></p>
 
 <h4><%= link_to "Edit #{@cat.name}", edit_cat_path(@cat) %></h4>
-<h4><%= link_to "Delete", cat_path(@cat), method: 'delete' %></h4>
+<h4><%= link_to "Delete #{@cat.name}", cat_path(@cat), method: 'delete' %></h4>
