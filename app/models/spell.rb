@@ -9,10 +9,6 @@ class Spell < ActiveRecord::Base
     less_than_or_equal_to: 9000,
     message: "It can't be over 9000"
   }
-#  validates :power_type, length: {
-#    maximum: 2,
-#    message: "Power can only be one or two types"
-#  }
 
   validate :power_type_must_be_two_or_less
 
