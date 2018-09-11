@@ -20,6 +20,7 @@ class CatsController < ApplicationController
     if @cat.save
       redirect_to cat_path(@cat)
     else
+      flash[:message] = "#{@cat.errors.full_messages}"
       render :new
     end
   end
@@ -44,6 +45,7 @@ class CatsController < ApplicationController
     if @cat.update(cat_params)
       redirect_to cat_path(@cat)
     else
+      flash[:message] = "#{@cat.errors.full_messages}"
       render :edit
     end
   end
