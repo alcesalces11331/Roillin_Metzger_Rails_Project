@@ -22,17 +22,16 @@ class SpellsController < ApplicationController
     @power_types = power_types
     @spell = Spell.new(spell_params)
     @spell.cat_id = params[:cat_id]
-  #  byebug
     if @spell.save
       redirect_to spell_path(@spell)
     else
+      flash[:message] = "#{@spell.errors.full_messages}"
       render :new
     end
   end
 
   def show
     @spell = Spell.find_by(id: params[:id])
-    #byebug
     @cat = Cat.find_by(id: @spell.cat_id)
   end
 
@@ -45,6 +44,7 @@ class SpellsController < ApplicationController
     if @spell.update(spell_params)
       redirect_to spell_path(@spell)
     else
+      flash[:message] = "#{@spell.errors.full_messages}"
       render :edit
     end
   end
