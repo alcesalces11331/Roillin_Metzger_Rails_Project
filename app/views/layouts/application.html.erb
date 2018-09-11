@@ -14,6 +14,11 @@
       <%= link_to signin_path %>
     <% end %>
   </div>
+  <div class="fields_with_errors">
+    <% if flash[:message] %>
+      <h6><%= flash[:message] %></h6>
+    <% end %>
+  </div>
 </head>
 <body>
 
