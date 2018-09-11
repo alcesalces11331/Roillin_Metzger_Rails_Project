@@ -1,10 +1,3 @@
-<%= form_for @cat, url: {action: "create"} do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :age %>
-  <%= f.number_field :age %><br>
-  <%= f.label :type_of %>
-  <%= f.text_field :type_of %><br>
+<h1>Create a New Spell-Cat</h1>
 
-  <%= f.submit "Create Cat" %>
-<% end %>
+<%= render partial: "form" %>
