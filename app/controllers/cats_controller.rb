@@ -32,16 +32,16 @@ class CatsController < ApplicationController
       @spell = Spell.find_by(id: params[:spell_id])
       @cat = Cat.find_by(id: @spell.cat_id)
     else
-      @cat = Cat.find_by(id: params[:id])
+      find_cat
     end
   end
 
   def edit
-    @cat = Cat.find_by(id: params[:id])
+    find_cat
   end
 
   def update
-    @cat = Cat.find_by(id: params[:id])
+    find_cat
     if @cat.update(cat_params)
       redirect_to cat_path(@cat)
     else
@@ -51,7 +51,7 @@ class CatsController < ApplicationController
   end
 
   def destroy
-    @cat = Cat.find_by(id: params[:id])
+    find_cat
     @cat.destroy
     redirect_to user_path(current_user.id)
   end
@@ -60,5 +60,9 @@ class CatsController < ApplicationController
 
   def cat_params
     params.require(:cat).permit(:name, :type_of, :age)
+  end
+
+  def find_cat
+    @cat = Cat.find_by(id: params[:id])
   end
 end
