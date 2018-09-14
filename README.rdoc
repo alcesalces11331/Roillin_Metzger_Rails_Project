@@ -1,27 +1,21 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Spell-Cats
+### Usage
+To use this app:
+* fork and clone from the directory
+* cd into it
+* run `bundle install` and 
+* then start up the server with `rails s`.
 
-Things you may want to cover:
+### Summary
+This app will allow users to create their own virtual cat and send their cat to a school of magic where they will be able to create and teach their cats spells.
 
-* Ruby version
+### Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/alcesalces11331/Rollin_Metzger_Rails_Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### License
+The gem is available as open source under the terms of the [BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause).
 
 
 Please feel free to use a different markup language if you do not plan to run
