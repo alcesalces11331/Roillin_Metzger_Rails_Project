@@ -28,14 +28,28 @@ class SessionsController < ApplicationController
   end
 
   def session_create_helper
-    @user = User.find_by(name: params[:name])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      render 'static/welcome'
-    else
-      flash[:message] = "could not authenticate"
-      render 'static/welcome'
-    end
+	if auth
+		user = User.find_by(username: params[:user][:username])
+        
+        if user && user.authenticate(params[:user][:password])
+            session[:user_id] = user.id
+            @user = user
+            redirect_to user_path(@user)
+        else
+            @user = User.last
+			flash[:message] = "could not authenticate"
+            redirect_to login_path
+        end
+	else
+		user = User.find_by(name: params[:name])
+		if user && user.authenticate(params[:password])
+		  session[:user_id] = user.id
+		  render 'static/welcome'
+		else
+		  flash[:message] = "could not authenticate"
+		  render 'static/welcome'
+		end
+	end
   end
 
 end
