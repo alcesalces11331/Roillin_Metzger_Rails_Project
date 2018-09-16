@@ -1,8 +1,18 @@
 <h3>Create a Spell</h3>
 
-<%= form_for @spell do |f| %>
-  
-  <%= render partial: "form" %>
-  <%= f.submit "Create Spell" %>
-    
-<% end %>
+  <%= form_for @spell, url: cat_spells_path, method: :post do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :description %>
+    <%= f.text_field :description %><br>
+    <%= f.label :power_level %>
+    <%= f.number_field :power_level %><br>
+    <%= f.label :power_type %><br>
+    <% @power_types.each do |p| %>
+      <%= f.label p %>
+      <%= f.check_box :power_type, { multiple: true }, p, false %><br>
+    <% end %>
+    <%= f.submit "Submit" %>
+  <% end %>
+
+ 
