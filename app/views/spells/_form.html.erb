@@ -1,4 +1,3 @@
-<%= form_for @spell, url: {action: "create"} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <%= f.label :description %>
@@ -10,5 +9,3 @@
     <%= f.label p %>
     <%= f.check_box :power_type, { multiple: true }, p, false %><br>
   <% end %>
-  <%= f.submit "Create Spell" %>
-<% end %>

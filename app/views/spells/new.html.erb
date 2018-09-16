@@ -1,3 +1,8 @@
 <h3>Create a Spell</h3>
 
-<%= render partial: "form" %>
+<%= form_for @spell do |f| %>
+  
+  <%= render partial: "form" %>
+  <%= f.submit "Create Spell" %>
+    
+<% end %>
