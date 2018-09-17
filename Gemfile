@@ -38,7 +38,8 @@ gem 'omniauth-facebook', '~> 5.0'
 gem 'dotenv-rails', '~> 2.5'
 
 # Nokogiri for thin
-gem 'nokogiri', '~> 1.8', '>= 1.8.4'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+# gem 'nokogiri', '~> 1.8', '>= 1.8.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

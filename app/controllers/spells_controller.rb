@@ -36,10 +36,12 @@ class SpellsController < ApplicationController
   end
 
   def edit
+    @power_types = power_types
     @spell = Spell.find_by(id: params[:id])
   end
 
   def update
+    @power_types = power_types
     @spell = Spell.find_by(id: params[:id])
     if @spell.update(spell_params)
       redirect_to spell_path(@spell)
