@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/spells', to: 'spells#index'
+  get '/spells/sort', to: 'spells#show_by'
 
   # session paths
   get '/signin', to: 'sessions#new'
