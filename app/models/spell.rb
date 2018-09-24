@@ -6,8 +6,8 @@ class Spell < ActiveRecord::Base
   validates :name, :description, :power_level, presence: true
   validates :power_level, numericality: {
     greater_than: 0,
-    less_than_or_equal_to: 9000,
-    message: "It can't be over 9000"
+    less_than_or_equal_to: 10,
+    message: "It can't be over 10"
   }
 
   validate :power_type_must_be_two_or_less
@@ -34,6 +34,22 @@ class Spell < ActiveRecord::Base
 
   def power_types
     @types = ['fire', 'water', 'earth', 'lightning', 'ice', 'poison', 'death', 'psychic', 'acid', 'wind']
+  end
+
+  def self.by_type(power_type)
+    @spells = []
+    Spell.where("power_type = ?", params[:power_type]).find_each do |spell|
+      @spells << spell
+    end
+    @spells
+  end
+
+  def self.by_power_level(power_level)
+    @spells = []
+    Spell.where("power_level = ?", params[:power_level]).find_each do |spell|
+      @spells << spell
+    end
+    @spells
   end
 
 end
