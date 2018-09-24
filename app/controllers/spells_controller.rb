@@ -1,5 +1,5 @@
 class SpellsController < ApplicationController
-  before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy]
+  before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy, :lists, :show_by]
   include SpellsHelper
 
   def index
@@ -55,6 +55,11 @@ class SpellsController < ApplicationController
     @spell = Spell.find_by(id: params[:id])
     @spell.destroy
     redirect_to user_path(current_user.id)
+  end
+
+  def show_by
+    @spells = Spell.by_type(params[:power_type]) if params[:power_type]
+    @spells = Spell.by_power_level(params[:power_level]) if params[:power_level]
   end
 
   private
