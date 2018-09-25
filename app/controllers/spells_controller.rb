@@ -4,10 +4,17 @@ class SpellsController < ApplicationController
 
   def index
     # provide a list of cats to the view for filter control
+    @power_types = power_types
     @cats = Cat.all
     if !params[:cat_id].blank?
       @cat = Cat.find_by(id: params[:cat_id])
       @spells = Spell.by_cat(@cat)
+    else
+      @spells = Spell.all
+    end
+
+    if params[:power_type]
+      @spells = Spell.by_type(params[:power_type])
     else
       @spells = Spell.all
     end
@@ -31,8 +38,13 @@ class SpellsController < ApplicationController
   end
 
   def show
-    @spell = Spell.find_by(id: params[:id])
-    @cat = Cat.find_by(id: @spell.cat_id)
+  #  byebug
+    if params[:id] != 'sort'
+      @spell = Spell.find_by(id: params[:id])
+      @cat = Cat.find_by(id: @spell.cat_id)
+    else params[:id] == 'sort'
+      @spells = Spell.by_type(params[:power_type])
+    end
   end
 
   def edit
@@ -58,6 +70,7 @@ class SpellsController < ApplicationController
   end
 
   def show_by
+    byebug
     @spells = Spell.by_type(params[:power_type]) if params[:power_type]
     @spells = Spell.by_power_level(params[:power_level]) if params[:power_level]
   end
