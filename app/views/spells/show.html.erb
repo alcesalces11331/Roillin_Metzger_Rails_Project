@@ -1,8 +1,36 @@
-<h2><%= @spell.name %></h2>
-<p><%= @spell.description %></p>
-<p><%= @spell.power_type %></p>
-<p><%= @spell.power_level %></p>
+<% if params[:id] == 'sort' %>
+    <h3> Spells </h3>
 
-<%= link_to "Edit #{@spell.name}", edit_spell_path(@spell) %><br>
-<%= link_to "Delete #{@spell.name}", spell_path(@spell), method: 'delete' %><br>
-<%= link_to "Back to #{@cat.name}", cat_path(@cat) %>
+    <% if params[:power_type] %>
+        <p> Power Type: <%= @spells.last.power_type %> </p>
+
+        <% @spells.each do |f| %>
+            <%= f.name %><br>
+            <%= f.description %><br>
+            <%= f.power_level%><br>
+    <% end %>
+
+    <% elsif params[:power_level] %>
+
+        <p> Power Level: <%= @spells.last.power_level %> </p>
+
+        <% @spells.each do |f| %>
+            <%= f.name %><br>
+            <%= f.description %><br>
+            <%= f.power_type %><br>
+    <% end %>
+
+    <%= link_to "Back To Spells Index", spells_path %>
+<% end %>
+
+<% else %>
+    <h2><%= @spell.name %></h2>
+    <p><%= @spell.description %></p>
+    <p><%= @spell.power_type %></p>
+    <p><%= @spell.power_level %></p>
+
+    <%= link_to "Edit #{@spell.name}", edit_spell_path(@spell) %><br>
+    <%= link_to "Delete #{@spell.name}", spell_path(@spell), method: 'delete' %><br>
+    <%= link_to "Back to #{@cat.name}", cat_path(@cat) %>
+<% end %>
+
