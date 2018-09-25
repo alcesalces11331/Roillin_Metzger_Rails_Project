@@ -38,7 +38,7 @@ class Spell < ActiveRecord::Base
 
   def self.by_type(power_type)
     @spells = []
-    Spell.where("power_type = ?", params[:power_type]).find_each do |spell|
+    Spell.where("power_type = ?", power_type).find_each do |spell|
       @spells << spell
     end
     @spells
@@ -46,7 +46,7 @@ class Spell < ActiveRecord::Base
 
   def self.by_power_level(power_level)
     @spells = []
-    Spell.where("power_level = ?", params[:power_level]).find_each do |spell|
+    Spell.where("power_level = ?", power_level).find_each do |spell|
       @spells << spell
     end
     @spells
