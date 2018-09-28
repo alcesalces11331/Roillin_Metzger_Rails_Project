@@ -7,10 +7,11 @@ This app will allow users to create their own virtual cat and send their cat to 
 
 ### Usage
 To use this app:
-* fork and clone from the directory
-* cd into it
+* Fork and clone from the directory
 * run `bundle install` and 
-* then start up the server with `rails s`.
+* Create migrations with `rake db:migrate`
+* Start up the server with `rails s`.
+* Navigate to the local browser @ localhost:3000
 
 ### Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/alcesalces11331/Rollin_Metzger_Rails_Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
