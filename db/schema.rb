@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180907013651) do
+ActiveRecord::Schema.define(version: 20181002225911) do
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20180907013651) do
     t.text    "description"
     t.string  "power_type",  default: "--- []\n"
     t.integer "power_level"
+    t.string  "school_id"
+    t.boolean "fire",        default: false
+    t.boolean "water",       default: false
+    t.boolean "earth",       default: false
+    t.boolean "lightning",   default: false
+    t.boolean "ice",         default: false
+    t.boolean "poison",      default: false
+    t.boolean "death",       default: false
+    t.boolean "psychic",     default: false
+    t.boolean "acid",        default: false
+    t.boolean "wind",        default: false
   end
 
   create_table "users", force: :cascade do |t|
