@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   #validates :password, format: { with: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, message: "must contain 1 lowercase alphabetical, 1 uppercase, and 1 number, and have at leaset 8 characters"}
 
   has_many :cats
-  has_many :spells, :through => :cats
+  has_many :spells, :through => :school
   has_many :potions, :through => :cats
 
   def self.find_or_create_by_omniauth(auth)
