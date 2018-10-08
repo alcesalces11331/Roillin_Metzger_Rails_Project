@@ -41,9 +41,9 @@ class SessionsController < ApplicationController
             redirect_to login_path
         end
 	else
-		user = User.find_by(name: params[:name])
-		if user && user.authenticate(params[:password])
-		  session[:user_id] = user.id
+		@user = User.find_by(name: params[:name])
+		if @user && @user.authenticate(params[:password])
+		  session[:user_id] = @user.id
 		  render 'static/welcome'
 		else
 		  flash[:message] = "could not authenticate"
