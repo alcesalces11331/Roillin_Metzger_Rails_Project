@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create', as: 'users'
 
+  get '/cats', to: 'cats#index'
+
+  get '/spells', to: 'spells#index'
+  get '/spells/sort', to: 'spells#show_by'
+  get '/spells/power_level', to: 'spells#by_power_level'
+
   # shallow nested routing to represent model relationships with ease of view
   resources :users, only: [:show] do
     resources :cats, shallow: true do
@@ -11,15 +17,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/cats', to: 'cats#index'
-
   resources :schools, only: [:show] do
     resources :spells, only: [:show], shallow: true
   end
 
-  get '/spells', to: 'spells#index'
-  get '/spells/sort', to: 'spells#show_by'
-
+  root 'static#welcome'
+  
   # session paths
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
@@ -28,7 +31,6 @@ Rails.application.routes.draw do
   # omniauth path
   get '/auth/facebook/callback' => 'sessions#create'
 
-  root 'static#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
