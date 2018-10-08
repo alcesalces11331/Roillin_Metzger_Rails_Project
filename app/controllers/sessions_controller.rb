@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
 		  render 'static/welcome'
 		else
 		  flash[:message] = "could not authenticate"
-		  render 'static/welcome'
+		  render 'new'
 		end
 	end
   end
