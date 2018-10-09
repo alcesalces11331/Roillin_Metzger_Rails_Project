@@ -29,6 +29,7 @@ class SpellsController < ApplicationController
     @power_types = power_types
     @spell = Spell.new(spell_params)
     @spell.cat_id = params[:cat_id]
+    Spell.create_spell_boolean(@spell)
     if @spell.save
       redirect_to spell_path(@spell)
     else
@@ -38,7 +39,6 @@ class SpellsController < ApplicationController
   end
 
   def show
-  #  byebug
     if params[:id] != 'sort'
       @spell = Spell.find_by(id: params[:id])
       @cat = Cat.find_by(id: @spell.cat_id)
@@ -70,9 +70,11 @@ class SpellsController < ApplicationController
   end
 
   def show_by
-    byebug
     @spells = Spell.by_type(params[:power_type]) if params[:power_type]
-    @spells = Spell.by_power_level(params[:power_level]) if params[:power_level]
+  end
+
+  def by_power_level
+   @spells = power_level_greater
   end
 
   private

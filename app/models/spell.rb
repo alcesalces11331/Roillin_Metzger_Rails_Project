@@ -32,7 +32,7 @@ class Spell < ActiveRecord::Base
     @matched_types
   end
 
-  def create_spell_boolean(spell)
+  def self.create_spell_boolean(spell)
     spell.power_type.tr('"', '').slice(1..-2).split(", ").each do |power|
       if power == "fire"
         spell.fire = true
