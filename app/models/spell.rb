@@ -6,11 +6,11 @@ class Spell < ActiveRecord::Base
   validates :name, :description, :power_level, presence: true
   validates :power_level, numericality: {
     greater_than: 0,
-    less_than_or_equal_to: 10,
-    message: "It can't be over 10"
+    less_than_or_equal_to: 100,
+    message: "It can't be over 100"
   }
 
-  validate :power_type_must_be_two_or_less
+  #validate :power_type_must_be_two_or_less
 
   def power_type_must_be_two_or_less
     regex = self.power_type.gsub!(/[\"\\\[\]\s]/, "")
@@ -32,24 +32,51 @@ class Spell < ActiveRecord::Base
     @matched_types
   end
 
+  def create_spell_boolean(spell)
+    spell.power_type.tr('"', '').slice(1..-2).split(", ").each do |power|
+      if power == "fire"
+        spell.fire = true
+      elsif power == "water"
+        spell.water = true
+      elsif power == "earth"
+        spell.earth = true
+      elsif power == "lightning"
+        spell.lightning = true
+      elsif power == "ice"
+        spell.ice = true
+      elsif power == "poison"
+        spell.poison = true
+      elsif power == "death"
+        spell.death = true
+      elsif power == "psychic"
+        spell.psychic = true
+      elsif power == "acid"
+        spell.acid = true
+      elsif power == "wind"
+        spell.wind = true
+      end
+    end
+    spell
+  end
+
   def power_types
     @types = ['fire', 'water', 'earth', 'lightning', 'ice', 'poison', 'death', 'psychic', 'acid', 'wind']
   end
 
-  def self.by_type(power_type)
-    @spells = []
-    Spell.where("power_type = ?", power_type).find_each do |spell|
-      @spells << spell
+  def self.by_type(input)
+    if any? {|spell| spell.input = true}
+      @spells = where("#{input} = ?", true)
+    else
+      @message = "No spells meet your search"
     end
-    @spells
   end
 
-  def self.by_power_level(power_level)
-    @spells = []
-    Spell.where("power_level = ?", power_level).find_each do |spell|
-      @spells << spell
+  def self.by_power_level(input)
+    if any? {|spell| spell.power_level >= input}
+      @spells = where("power_level >= ?", input)
+    else
+      @message = "No spells meet your search"
     end
-    @spells
   end
 
 end
