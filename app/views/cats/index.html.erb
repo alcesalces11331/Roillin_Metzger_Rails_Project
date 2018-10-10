@@ -1,11 +1,9 @@
 <% @cats.each do |c| %>
   <div class="cat_index">
-  <% if c.user_id == current_user.id %>
     <p class="cat_name"><%= link_to "#{c.name}", cat_path(c) %></p>
     <p class="cat_type_of"><%= c.type_of %></p>
     <p class="cat_age"><%= c.age %></p>
     <p id="cat_spells"><%= link_to "#{c.name}'s Spells", cat_spells_path(c) %></p>
-  <% end %>
   </div>
 <% end %>
 

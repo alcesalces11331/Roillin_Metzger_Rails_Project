@@ -2,9 +2,8 @@ class CatsController < ApplicationController
   before_action :login_checkpoint, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @users = User.all
-    if !params[:user].blank? && params[:user] == current_user.id
-      @cats = Cat.by_user(params[:user])
+    if params[:user_id].to_i == current_user.id
+      @cats = Cat.by_user(params[:user_id])
     else
       @cats = Cat.all
     end
