@@ -1,4 +1,4 @@
-<h4> Sort Spells By: </h4>
+<h3> Sort Spells By: </h3>
 
 <%= form_tag(spells_sort_path, method: :get) do %>
   <%= label_tag(:power_type, "Search for Power Type:") %>
@@ -9,6 +9,8 @@
 <% if params[:cat_id] && @spells != nil %>
 
   <p> OR <%= link_to "Create a Spell", new_cat_spell_path(@cat) %> </p>
+
+  <h3>Your Spells</h3>
 
   <% @spells.each do |s| %>
     <% if s.cat_id == params[:cat_id] %>
