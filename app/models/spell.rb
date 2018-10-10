@@ -64,8 +64,27 @@ class Spell < ActiveRecord::Base
   end
 
   def self.by_type(input)
-    if any? {|spell| spell.input = true}
-      @spells = where("#{input} = ?", true)
+    case input
+    when 'fire'
+      @spells = where("fire = ?", true)
+    when 'water'
+      @spells = where("water = ?", true)
+    when 'earth'
+      @spells = where("earth = ?", true)
+    when 'lightning'
+      @spells = where("lightning = ?", true)
+    when 'ice'
+      @spells = where("ice = ?", true)
+    when 'poison'
+      @spells = where("poison = ?", true)
+    when 'death'
+      @spells = where("death = ?", true)
+    when 'psychic'
+      @spells = where("psychic = ?", true)
+    when 'acid'
+      @spells = where("acid = ?", true)
+    when 'wind'
+      @spells = where("wind = ?", true)
     else
       @message = "No spells meet your search"
     end
