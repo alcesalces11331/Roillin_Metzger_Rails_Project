@@ -4,6 +4,7 @@ class SpellsController < ApplicationController
 
   def index
     # provide a list of cats to the view for filter control
+   # byebug
     @power_types = power_types
     @cats = Cat.all
     if !params[:cat_id].blank?
@@ -74,7 +75,7 @@ class SpellsController < ApplicationController
   end
 
   def by_power_level
-   @spells = power_level_greater
+   @spells = Spell.by_power_level(params[:power_level]) if params[:power_level]
   end
 
   private

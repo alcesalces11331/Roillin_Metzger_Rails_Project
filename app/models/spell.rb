@@ -91,8 +91,9 @@ class Spell < ActiveRecord::Base
   end
 
   def self.by_power_level(input)
-    if any? {|spell| spell.power_level >= input}
-      @spells = where("power_level >= ?", input)
+    int_input = input.to_i
+    if any? {|spell| spell.power_level >= int_input}
+      @spells = where("power_level >= ?", int_input)
     else
       @message = "No spells meet your search"
     end

@@ -1,4 +1,5 @@
-<h3> Sort Spells By: </h3>
+<!-- Move this sorting logic to its own page -->
+<h3> Sort All Spells By: </h3>
 
 <%= form_tag(spells_sort_path, method: :get) do %>
   <%= label_tag(:power_type, "Search for Power Type:") %>
@@ -6,11 +7,18 @@
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
+<h5> OR </h5>
+<%= form_tag(spells_power_level_path, method: :get) do %>
+  <%= label_tag(:power_level, "Search for Power Level Greater Than:") %>
+  <%= number_field_tag :power_level, params[:power_level] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
 <% if params[:cat_id] && @spells != nil %>
 
-  <p> OR <%= link_to "Create a Spell", new_cat_spell_path(@cat) %> </p>
+  <h5> OR <%= link_to "Create a Spell", new_cat_spell_path(@cat) %> </h5>
 
-  <h3>Your Spells</h3>
+  <h3><%= @cat.name %>'s Spells </h3>
 
   <% @spells.each do |s| %>
     <% if s.cat_id == params[:cat_id] %>
